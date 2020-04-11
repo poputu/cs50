@@ -12,10 +12,10 @@ int main(int argc, char *argv[])
     //insure user give one argument
     if (argc > 2)
     {
-        printf ("Use only one argument (file to recover)\n");
+        printf("Use only one argument (file to recover)\n");
         return 1;
     }
-    
+
     // Name for our file, and we use 2 because we use only one argv
     char *infile = argv[1];
     FILE *inptr = fopen(infile, "r");
@@ -25,11 +25,11 @@ int main(int argc, char *argv[])
         return 4;
     }
     unsigned char *buffer = malloc(512);// make space for data from flash
-    int counter = 0; 
+    int counter = 0;
     FILE *image;
     char image_name[8];
     // we read to buffer from file inptr with size of 512
-    while( fread(buffer, 512, 1, inptr))
+    while (fread(buffer, 512, 1, inptr))
     {
         //rules for jpeg header
         //(buffer[3] & 0xf0) == 0xe0 use this to ignore 0 in 0xf0, you can move 0 so first on other bit will be ignored
@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
                 fclose(image);
             }
             // create image_name
-            sprintf(image_name, "%03d.jpg", counter);
+            sprintf(image_name, "%03i.jpg", counter);
             // open new image file
             image = fopen(image_name, "w");
             if (image == NULL)
@@ -56,14 +56,14 @@ int main(int argc, char *argv[])
         }
         //check if we have found jpeg and write it, code above will start only if we found new one
         //if not we will continue to write old file
-        if( counter > 0)
+        if (counter > 0)
         {
             fwrite(buffer, 512, 1, image);
         }
-        
+
     }
     free(buffer);
     fclose(image);
     fclose(inptr);
-    
+
 }
