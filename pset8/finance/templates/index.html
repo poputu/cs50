@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+
+<style>
+table{
+  border: 1px solid grey;
+  height: 80%;
+  width: 80%;
+  background-color: powderblue;
+}
+th, td{
+    border: 1px solid grey;
+}
+</style>
+    <div>
+        <table>
+        <tr style="background-color:#F8F9FA;">
+            <th>symbol</th>
+            <th>shares</th>
+            <th>price</th>
+            <th>total</th>
+        </tr>
+        <tr>
+            <th>dollar</th>
+            <th class="count">{{cash}}</th>
+            <th>1</th>
+            <th>{{cash}}</th>
+
+        </tr>
+        {% for row in db_data %}
+        <tr>
+            <th>{{row['symbol']}}</th>
+            <th>{{row['amount']}}</th>
+            <th>{{current_price[row['symbol']]}}</th>
+            <th class="count" id="count">{{row['amount'] * current_price[row['symbol']]}}</th>
+
+        </tr>
+        {% endfor %}
+        <tr>
+            <th>total in usd</th>
+            <th>-</th>
+            <th>-</th>
+            <th class="total" id="total">{{total_cash}}</th>
+        </tr>
+        </table>
+    </div>
+{% endblock %}

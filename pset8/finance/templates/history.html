@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+<style>
+table{
+  border: 1px solid grey;
+  height: 80%;
+  width: 80%;
+  background-color: powderblue;
+}
+th, td{
+    border: 1px solid grey;
+}
+</style>
+    <div>
+        <table>
+        <tr style="background-color:#F8F9FA;">
+            <th>state</th>
+            <th>symbol</th>
+            <th>number of shares</th>
+            <th>price</th>
+            <th>total</th>
+            <th>time</th>
+        </tr>
+        {% for row in history %}
+
+        <tr {%if row['state']=='sell' %}
+        style="background-color:#B0C4DE;"
+        {%elif row['state']=='buy' %}
+        style="background-color:#FFDEAD;"
+        {% endif %}>
+            <th>{{row['state']}}</th>
+            <th>{{row['symbol']}}</th>
+            <th>{{row['amount']}}</th>
+            <th>{{row['price']}}</th>
+            <th>{{row['price']*row['amount']}}</th>
+            <th>{{row['time']}}</th>
+
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+{% endblock %}
