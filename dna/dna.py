@@ -26,7 +26,7 @@ def checker():
         d = int(value)
         # find all repeated sequences and return list of tuples with one tuple
 
-        d2 = ([max(i) for i in re.findall(r'(({0})\2+)'.format(name), data)])
+        d2 = ([max(i) for i in re.findall(r'(({name})\2+)', data)])
 
         if d2:
             d2 = int(len(max(d2)) / len(name))

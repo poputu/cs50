@@ -1,0 +1,24 @@
+body {background-color: lightblue;}
+body {
+    padding: 5px 35px 5px 5px;
+    margin: 5px;
+
+}
+title {text-align: center;}
+
+.pus {text-align: center;}
+
+select {
+    padding: 5px 35px 5px 5px;
+    border: 1px solid #CCC;
+    background: url(http://www.stackoverflow.com/favicon.ico) 96% / 15% no-repeat #EEE;
+    }
+abbr {
+    text-align: center;
+    color: blue;
+
+}
+
+h3 {
+    text-align: center;
+}
